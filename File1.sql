@@ -1,0 +1,2 @@
+use cnrbase;
+    show tables;
