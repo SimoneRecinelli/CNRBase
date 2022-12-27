@@ -5,5 +5,8 @@ use cnrbase;
      Figura varchar(30)
      );
 
+show tables;
+
+
 
 
