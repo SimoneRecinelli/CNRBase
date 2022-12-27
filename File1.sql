@@ -1,7 +1,7 @@
 use cnrbase;
  create table Irbim (
      SedeAmm varchar(30) primary key,
-     ParIVA char(11),
+     ParIVA char(11) not null,
      Figura varchar(30)
      );
 create table Fattura (
@@ -12,7 +12,7 @@ create table Fattura (
     Cessionario varchar(30) not null
     );
 create table RDA(
-    NumOrd integer primary key,
+    NumOrd integer primary key not null,
     CostoTot numeric(8,2),
     QBarche smallint,
     NomeR varchar(30),
@@ -23,7 +23,7 @@ create table Contratto (
     CostTot decimal(8,2),
     QBarche smallint,
     NomeDitta varchar(30),
-    ParIVA char(11)
+    ParIVA char(11) not null
 );
 create table TerzoIntermediario(
     NomeBanca varchar(30),
@@ -38,14 +38,14 @@ create table Domanda (
 
 create table Pescatore (
     CodFisc char(16) primary key,
-    Iban char(27),
+    Iban char(27) not null,
     NomeP varchar(30),
     CognomeP varchar(30)
 );
 
 create table Progetto (
     CodProg integer primary key,
-    Budget decimal(8,2)
+    Budget decimal(8,2) not null
 );
 create table Partecipazione(
     CodProg integer,
@@ -94,12 +94,12 @@ create table Imbarcazione (
 
 create table UscitaPescatore (
     CodFisc char(16) primary key,
-    IdOp integer
+    IdOp integer not null
 );
 
 create table UscitaRicercatore (
     CodFisc char(16) primary key,
-    IdOp integer
+    IdOp integer not null
 );
 
 create table AnimalePescato (
