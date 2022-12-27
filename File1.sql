@@ -1,2 +1,3 @@
 use cnrbase;
-    show tables;
+ create table Irbim;
+
