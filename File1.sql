@@ -12,11 +12,9 @@ create table Fattura (
     Cessionario varchar(30) not null
     );
 create table RDA(
-    NumOrd integer primary key not null,
+    NumOrd integer primary key,
     CostoTot numeric(8,2),
-    QBarche smallint,
-    NomeR varchar(30),
-    CognomeR varchar(30)
+    QBarche smallint
 );
 create table Contratto (
     NumOrd integer primary key,
