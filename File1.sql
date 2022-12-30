@@ -142,11 +142,12 @@ create table AnimalePescato (
     Sesso varchar(1),
     Lunghezza decimal (5,2),
     Peso decimal (5,3),
-    StadioMat varchar(2),
+    StadioMat varchar(2)
 );
 drop table AnimalePescato;
 show tables;
-
+describe Contratto;
+select * from AnimalePescato;
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Ancona', 21145647324, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Mazara Del Vallo', 34528374621, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Lesina', 98726327436, 'Amministratore');
@@ -169,34 +170,28 @@ insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (50
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (102,5400.00, 35,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (8743,3489.00, 23,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
 
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (1589,1502.00, 10, 'F.lli Gianni Pesca SPA', 50982900529);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (1385,2300.00, 15, 'Cuore ittico SAS', 60888610627);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (4857,1260.00, 8, 'Emporio del Marinaio SPA', 74936370159);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (3034,3000.00, 20, 'F.lli Gianni Pesca SAS', 50982900529);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (4372,6704.00, 40, 'Cuore ittico SAS', 60888610627);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (509,1198.00, 7, 'F.lli Gianni Pesca SPA', 50982900529);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (102,5400.00, 35, 'Cuore ittico SAS', 60888610627);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (8743,3489.00, 23, 'Emporio del Marinaio SPA', 74936370159);
+
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00728, 'Scampo', 'C' , 'M', 000.18, 00.078, '1A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)values (00352, 'Scampo', 'N' , 'F', 000.12, 00.069, '3A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00096, 'Scampo', 'N' , 'F', 000.11, 00.066, '2B');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (01233, 'Scampo', 'C' , 'M', 000.20, 00.085, '3A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (06991, 'Scampo', 'N' , 'F', 000.14, 00.072, '1B');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00094, 'Merluzzo', 'C' , 'M', 000.86, 13.660, '4A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00522, 'Merluzzo', 'N' , 'M', 000.97, 17.320, '2B');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (03851, 'Merluzzo', 'C' , 'F', 001.04, 18.240, '1A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (09427, 'Merluzzo', 'C' , 'F', 000.92, 15.800, '2A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00447, 'Merluzzo', 'N' , 'M', 001.16, 20.450, '2B');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (03750, 'Vongola', 'C' , 'M', 000.20, 00.025, '2A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (02450, 'Vongola', 'C' , 'M', 000.22, 00.022, '2B');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (02950, 'Vongola', 'C' , 'M', 000.17, 00.024, '3A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (03970, 'Vongola', 'S' , 'M', 000.23, 00.029, '1A');
-
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (04650, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
 
-a
