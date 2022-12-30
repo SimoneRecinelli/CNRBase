@@ -150,6 +150,7 @@ show tables;
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Ancona', 21145647324, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Mazara Del Vallo', 34528374621, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Lesina', 98726327436, 'Amministratore');
+
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
 values (00728, 'Scampo', 'C' , 'M', 000.18, 00.078, '1A');
 
@@ -192,17 +193,17 @@ insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (50
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (102,5400.00, 35,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (8743,3489.00, 23,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
-values (00550, 'Vongola', 'C' , 'M', 000.20, 00.025, '2A');
+values (03750, 'Vongola', 'C' , 'M', 000.20, 00.025, '2A');
 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
-values (00550, 'Vongola', 'C' , 'M', 000.22, 00.022, '2B');
+values (02450, 'Vongola', 'C' , 'M', 000.22, 00.022, '2B');
 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
-values (00550, 'Vongola', 'C' , 'M', 000.17, 00.024, '3A');
+values (02950, 'Vongola', 'C' , 'M', 000.17, 00.024, '3A');
 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
-values (00550, 'Vongola', 'S' , 'M', 000.23, 00.029, '1A');
+values (03970, 'Vongola', 'S' , 'M', 000.23, 00.029, '1A');
 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
-values (00550, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
+values (04650, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
 
