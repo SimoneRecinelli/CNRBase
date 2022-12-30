@@ -4,19 +4,27 @@ use cnrbase;
      ParIVA char(11) not null,
      Figura varchar(30)
      );
+drop table Irbim;
 
 create table Fattura (
     NumOrd integer primary key,
     CostoTot numeric(8,2),
     QBarche smallint,
     Cedente varchar(30) not null,
-    Cessionario varchar(30) not null
+    Cessionario varchar(40) not null
     );
+
+drop table Fattura;
+
+
 create table RDA(
     NumOrd integer primary key,
     CostoTot numeric(8,2),
     QBarche smallint
 );
+
+drop table RDA;
+
 create table Contratto (
     NumOrd integer primary key,
     CostTot decimal(8,2),
@@ -24,17 +32,23 @@ create table Contratto (
     NomeDitta varchar(30),
     ParIVA char(11) not null
 );
+
+drop table Contratto;
+
 create table TerzoIntermediario(
     NomeBanca varchar(30),
     Iban char(27),
     primary key(NomeBanca,Iban)
 );
+
+drop table TerzoIntermediario;
+
 create table Domanda (
     NumOrd integer,
     CodFisc char(16),
     primary key (NumOrd,CodFisc)
 );
-
+ drop table Domanda;
 create table Pescatore (
     CodFisc char(16) primary key,
     Iban char(27) not null,
@@ -42,20 +56,30 @@ create table Pescatore (
     CognomeP varchar(30)
 );
 
+drop table Domanda;
+
 create table Progetto (
     CodProg integer primary key,
     Budget decimal(8,2) not null
 );
+drop table Progetto;
+
 create table Partecipazione(
     CodProg integer,
     CodFisc char(16),
     primary key(CodProg,CodFisc)
 );
+
+drop table Partecipazione;
+
 create table Ricercatore(
     CodFisc char(16) primary key,
     NomeR varchar(30),
     CognomeR varchar(30)
 );
+
+drop table Ricercatore;
+
 create table Possesso(
      IdBarca integer,
      CodFisc char(16),
@@ -123,6 +147,9 @@ create table AnimalePescato (
 drop table AnimalePescato;
 show tables;
 
+insert into Irbim (SedeAmm, ParIVA, Figura) values ('Ancona', 21145647324, 'Amministratore');
+insert into Irbim (SedeAmm, ParIVA, Figura) values ('Mazara Del Vallo', 34528374621, 'Amministratore');
+insert into Irbim (SedeAmm, ParIVA, Figura) values ('Lesina', 98726327436, 'Amministratore');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
 values (00728, 'Scampo', 'C' , 'M', 000.18, 00.078, '1A');
 
@@ -156,6 +183,14 @@ values (00447, 'Merluzzo', 'N' , 'M', 001.16, 20.450, '2B');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
 values (00853, 'Merluzzo', 'C' , 'M', 001.23, 22.380, '1B');
 
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (1589,1502.00, 10,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (1385,2300.00, 15,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (4857,1260.00, 8,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (3034,3000.00, 20,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (4372,6704.00, 40,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (509,1198.00, 7,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (102,5400.00, 35,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (8743,3489.00, 23,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)
 values (00550, 'Vongola', 'C' , 'M', 000.20, 00.025, '2A');
 
