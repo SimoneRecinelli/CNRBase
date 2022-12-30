@@ -190,3 +190,4 @@ insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) 
 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (04650, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
 
+a
