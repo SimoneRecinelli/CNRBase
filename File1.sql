@@ -81,7 +81,7 @@ create table Ricercatore(
 drop table Ricercatore;
 
 create table Possesso(
-     IdBarca integer,
+     IdBarca varchar(8),
      CodFisc char(16),
      primary key(IdBarca,CodFisc)
 );
@@ -101,7 +101,7 @@ create table OperazioneDiPesca(
 drop table OperazioneDiPesca;
 
 create table Utilizzo(
-    IdBarca integer,
+    IdBarca varchar(8),
     IdOp integer,
     primary key(IdBarca,IdOp)
 );
@@ -115,9 +115,9 @@ create table Cattura(
 drop table Cattura;
 
 create table Imbarcazione (
-    IdBarca integer primary key,
-    Attrezzo varchar(20),
-    LFT smallint,
+    IdBarca varchar(8) primary key,
+    Attrezzo varchar(30),
+    LFT decimal(4,2),
     PortoP varchar(20),
     PortoA varchar(20)
 );
@@ -142,12 +142,11 @@ create table AnimalePescato (
     Sesso varchar(1),
     Lunghezza decimal (5,2),
     Peso decimal (5,3),
-    StadioMat varchar(2)
+    StadioMat varchar(2),
 );
 drop table AnimalePescato;
 show tables;
-describe Contratto;
-select * from AnimalePescato;
+
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Ancona', 21145647324, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Mazara Del Vallo', 34528374621, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Lesina', 98726327436, 'Amministratore');
@@ -178,6 +177,60 @@ insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (4372
 insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (509,1198.00, 7, 'F.lli Gianni Pesca SPA', 50982900529);
 insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (102,5400.00, 35, 'Cuore ittico SAS', 60888610627);
 insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (8743,3489.00, 23, 'Emporio del Marinaio SPA', 74936370159);
+
+insert into Progetto (CodProg, Budget) values (1021,023670.00);
+insert into Progetto (CodProg, Budget) values (874,018842.00);
+insert into Progetto (CodProg, Budget) values (2641,061025.00);
+insert into Progetto (CodProg, Budget) values (622,112300.00);
+
+insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('RSSGLN88C12G631L','IT16B0300203280654193989541','Giuliano','Rossi');
+insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('VRDFRC72E26D145W','IT70J0300203280943618364116','Francesco','Verdi');
+insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('ZMPMRC76A08G439W','IT50Z0300203280882854883384','Marco','Zampa');
+insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('DCCMRT89F10K212L','IT85X0300203280325219582297','Marta','De Cecco');
+insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('BNCDBR81I03D110W','IT47S0300203280992657365563','Debora','Bianchi');
+insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('SRGRRT90L01I607X','IT19R0300203280396558915351','Roberto','Soraggi');
+
+insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CPPFNC69T09F315F', 'Franco','Ceppi');
+insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CHLGCM73L01E388X', 'Giacomo','Chiola');
+insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('PNTLSS80B28E388T', 'Alessia','Pantani');
+insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('RVRVSS63R41G185P', 'Vanessa','Raverta');
+insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CLLGPP84L01D696J', 'Giuseppe','Cilli');
+insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('GVNNGL90T30C252V', 'Angelo','Giovannetti');
+insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CRDCCL85A41F789X', 'Cecilia','Caredio');
+
+
+insert into Partecipazione(CodProg, CodFisc) values (1021,'PNTLSS80B28E388T');
+insert into Partecipazione(CodProg, CodFisc) values (1021,'CHLGCM73L01E388X');
+insert into Partecipazione(CodProg, CodFisc) values (2641,'CLLGPP84L01D696J');
+insert into Partecipazione(CodProg, CodFisc) values (622,'RVRVSS63R41G185P');
+insert into Partecipazione(CodProg, CodFisc) values (622,'CPPFNC69T09F315F');
+insert into Partecipazione(CodProg, CodFisc) values (874,'GVNNGL90T30C252V');
+insert into Partecipazione(CodProg, CodFisc) values (874,'CRDCCL85A41F789X');
+insert into Partecipazione(CodProg, CodFisc) values (1021,'GVNNGL90T30C252V');
+
+insert into Domanda(NumOrd, CodFisc) values (1589,'CPPFNC69T09F315F');
+insert into Domanda(NumOrd, CodFisc) values (1385,'CHLGCM73L01E388X');
+insert into Domanda(NumOrd, CodFisc) values (4857,'PNTLSS80B28E388T');
+insert into Domanda(NumOrd, CodFisc) values (3034,'RVRVSS63R41G185P');
+insert into Domanda(NumOrd, CodFisc) values (4372,'CLLGPP84L01D696J');
+insert into Domanda(NumOrd, CodFisc) values (509,'GVNNGL90T30C252V');
+insert into Domanda(NumOrd, CodFisc) values (102,'CRDCCL85A41F789X');
+insert into Domanda(NumOrd, CodFisc) values (8743,'CLLGPP84L01D696J');
+
+insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA) values ('AL635','Palamito fisso', 06.30, 'Ancona', 'Ancona');
+insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA) values ('GS870','Lenza a mano ', 05.80, 'Pescara', 'Pescara');
+insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA) values ('ZC112','Draga automatica', 07.10, 'Ancona', 'Ancona');
+insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA) values ('CD902','Reti a strascico', 06.00, 'Ancona', 'Ancona');
+insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA) values ('AZ205','Palamito fisso', 06.90, 'Bari', 'Bari');
+insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA) values ('FH448','Draga a mano', 07.40, 'Ancona', 'Ancona');
+
+insert into Possesso(IdBarca, CodFisc) values ('AL635','RSSGLN88C12G631L');
+insert into Possesso(IdBarca, CodFisc) values ('AL635','VRDFRC72E26D145W');
+insert into Possesso(IdBarca, CodFisc) values ('GS870','ZMPMRC76A08G439W');
+insert into Possesso(IdBarca, CodFisc) values ('ZC112','DCCMRT89F10K212L');
+insert into Possesso(IdBarca, CodFisc) values ('CD902','BNCDBR81I03D110W');
+insert into Possesso(IdBarca, CodFisc) values ('AZ205','SRGRRT90L01I607X');
+insert into Possesso(IdBarca, CodFisc) values ('FH448','SRGRRT90L01I607X');
 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00728, 'Scampo', 'C' , 'M', 000.18, 00.078, '1A');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)values (00352, 'Scampo', 'N' , 'F', 000.12, 00.069, '3A');
