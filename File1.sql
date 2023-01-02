@@ -327,4 +327,14 @@ update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = '1', Lat
 
 update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
 
+delete from Pescatore;
+
+delete from Contratto where NomeDitta = 'Cuore ittico SAS';
+
+delete from Imbarcazione;
+
+delete from OperazioneDiPesca;
+
+delete from AnimalePescato;
+
 
