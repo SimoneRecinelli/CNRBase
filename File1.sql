@@ -359,5 +359,7 @@ select QBarche from RDA R inner join Domanda D on R.NumOrd = D.NumOrd where D.Co
 
 select LFT from Imbarcazione I inner join Possesso P on I.IdBarca = P.IdBarca where P.CodFisc = 'DCCMRT89F10K212L';
 
+select OperazioneDiPesca.data from OperazioneDiPesca inner join Cattura C on OperazioneDiPesca.IdOp = C.IdOp where C.IdPesce = '522';
+
 select * from Imbarcazione;
 select * from Possesso;
