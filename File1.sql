@@ -90,11 +90,11 @@ drop table Possesso;
 create table OperazioneDiPesca(
     IdOp integer primary key,
     GSA smallint,
-    TipoOss char(2),
-    LatI decimal(8,6),
-    LatF decimal(8,6),
-    LongI decimal(9,6),
-    LongF decimal(9,6),
+    TipoOss char(1),
+    LatI varchar(15),
+    LatF varchar(15),
+    LongI varchar(15),
+    LongF varchar(15),
     Qbarche smallint,
     data date
 );
@@ -232,19 +232,69 @@ insert into Possesso(IdBarca, CodFisc) values ('CD902','BNCDBR81I03D110W');
 insert into Possesso(IdBarca, CodFisc) values ('AZ205','SRGRRT90L01I607X');
 insert into Possesso(IdBarca, CodFisc) values ('FH448','SRGRRT90L01I607X');
 
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00728, 'Scampo', 'C' , 'M', 000.18, 00.078, '1A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)values (00352, 'Scampo', 'N' , 'F', 000.12, 00.069, '3A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00096, 'Scampo', 'N' , 'F', 000.11, 00.066, '2B');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (01233, 'Scampo', 'C' , 'M', 000.20, 00.085, '3A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (06991, 'Scampo', 'N' , 'F', 000.14, 00.072, '1B');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00094, 'Merluzzo', 'C' , 'M', 000.86, 13.660, '4A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00522, 'Merluzzo', 'N' , 'M', 000.97, 17.320, '2B');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (03851, 'Merluzzo', 'C' , 'F', 001.04, 18.240, '1A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (09427, 'Merluzzo', 'C' , 'F', 000.92, 15.800, '2A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (00447, 'Merluzzo', 'N' , 'M', 001.16, 20.450, '2B');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (03750, 'Vongola', 'C' , 'M', 000.20, 00.025, '2A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (02450, 'Vongola', 'C' , 'M', 000.22, 00.022, '2B');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (02950, 'Vongola', 'C' , 'M', 000.17, 00.024, '3A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (03970, 'Vongola', 'S' , 'M', 000.23, 00.029, '1A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (04650, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (1,17,'S','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 1, 2021-08-17);
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (2,17,'N','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 2, 2021-09-03);
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (3,18,'N','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 2, 2021-09-13);
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (4,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 1, 2021-09-27);
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (5,17,'S','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 1, 2021-10-05);
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (6,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 2, 2021-10-14);
+
+insert into UscitaPescatore(CodFisc, IdOp) values ('RSSGLN88C12G631L',1);
+insert into UscitaPescatore(CodFisc, IdOp) values ('VRDFRC72E26D145W',1);
+insert into UscitaPescatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',2);
+insert into UscitaPescatore(CodFisc, IdOp) values ('DCCMRT89F10K212L',2);
+insert into UscitaPescatore(CodFisc, IdOp) values ('BNCDBR81I03D110W',3);
+insert into UscitaPescatore(CodFisc, IdOp) values ('CLLGPP84L01D696J',4);
+insert into UscitaPescatore(CodFisc, IdOp) values ('RSSGLN88C12G631L',5);
+insert into UscitaPescatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',6);
+
+insert into UscitaRicercatore(CodFisc, IdOp) values ('CPPFNC69T09F315F',1);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('CHLGCM73L01E388X',2);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('PNTLSS80B28E388T',2);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('RVRVSS63R41G185P',3);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('CPPFNC69T09F315F',4);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('GVNNGL90T30C252V',5);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('RVRVSS63R41G185P',6);
+
+insert into Utilizzo(IdBarca, IdOp) values ('AL635', 1);
+insert into Utilizzo(IdBarca, IdOp) values ('GS870', 2);
+insert into Utilizzo(IdBarca, IdOp) values ('ZC112', 2);
+insert into Utilizzo(IdBarca, IdOp) values ('AL635', 3);
+insert into Utilizzo(IdBarca, IdOp) values ('CD902', 3);
+insert into Utilizzo(IdBarca, IdOp) values ('GS870', 4);
+insert into Utilizzo(IdBarca, IdOp) values ('FH448', 5);
+insert into Utilizzo(IdBarca, IdOp) values ('ZC112', 6);
+insert into Utilizzo(IdBarca, IdOp) values ('CD902', 6);
+
+insert into Cattura(IdOp, IdPesce) values (1,728);
+insert into Cattura(IdOp, IdPesce) values (1,352);
+insert into Cattura(IdOp, IdPesce) values (1,96);
+insert into Cattura(IdOp, IdPesce) values (1,1233);
+insert into Cattura(IdOp, IdPesce) values (2,6991);
+insert into Cattura(IdOp, IdPesce) values (3,447);
+insert into Cattura(IdOp, IdPesce) values (3,9427);
+insert into Cattura(IdOp, IdPesce) values (3,94);
+insert into Cattura(IdOp, IdPesce) values (4,3851);
+insert into Cattura(IdOp, IdPesce) values (5,522);
+insert into Cattura(IdOp, IdPesce) values (5,3750);
+insert into Cattura(IdOp, IdPesce) values (6,2450);
+insert into Cattura(IdOp, IdPesce) values (6,2950);
+insert into Cattura(IdOp, IdPesce) values (6,3970);
+insert into Cattura(IdOp, IdPesce) values (6,4650);
+
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (728, 'Scampo', 'C' , 'M', 000.18, 00.078, '1A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)values (352, 'Scampo', 'N' , 'F', 000.12, 00.069, '3A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (96, 'Scampo', 'N' , 'F', 000.11, 00.066, '2B');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (1233, 'Scampo', 'C' , 'M', 000.20, 00.085, '3A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (6991, 'Scampo', 'N' , 'F', 000.14, 00.072, '1B');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (94, 'Merluzzo', 'C' , 'M', 000.86, 13.660, '4A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (522, 'Merluzzo', 'N' , 'M', 000.97, 17.320, '2B');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (3851, 'Merluzzo', 'C' , 'F', 001.04, 18.240, '1A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (9427, 'Merluzzo', 'C' , 'F', 000.92, 15.800, '2A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (447, 'Merluzzo', 'N' , 'M', 001.16, 20.450, '2B');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (3750, 'Vongola', 'C' , 'M', 000.20, 00.025, '2A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (2450, 'Vongola', 'C' , 'M', 000.22, 00.022, '2B');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (2950, 'Vongola', 'C' , 'M', 000.17, 00.024, '3A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (3970, 'Vongola', 'S' , 'M', 000.23, 00.029, '1A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (4650, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
 
