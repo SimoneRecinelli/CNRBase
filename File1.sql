@@ -232,12 +232,12 @@ insert into Possesso(IdBarca, CodFisc) values ('CD902','BNCDBR81I03D110W');
 insert into Possesso(IdBarca, CodFisc) values ('AZ205','SRGRRT90L01I607X');
 insert into Possesso(IdBarca, CodFisc) values ('FH448','SRGRRT90L01I607X');
 
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (1,17,'S','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 1, 2021-08-17);
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (2,17,'N','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 2, 2021-09-03);
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (3,18,'N','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 2, 2021-09-13);
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (4,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 1, 2021-09-27);
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (5,17,'S','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 1, 2021-10-05);
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (6,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 2, 2021-10-14);
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (1,17,'S','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 1, '2021-08-17');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (2,17,'N','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 2, '2021-09-03');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (3,18,'N','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 2, '2021-09-13');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (4,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 1, '2021-09-27');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (5,17,'S','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 1, '2021-10-05');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (6,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 2, '2021-10-14');
 
 insert into UscitaPescatore(CodFisc, IdOp) values ('RSSGLN88C12G631L',1);
 insert into UscitaPescatore(CodFisc, IdOp) values ('VRDFRC72E26D145W',1);
@@ -323,6 +323,7 @@ update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNT
 
 update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
 
+update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = '1', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
 
 update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
 
