@@ -49,6 +49,7 @@ create table Domanda (
     primary key (NumOrd,CodFisc)
 );
  drop table Domanda;
+
 create table Pescatore (
     CodFisc char(16) primary key,
     Iban char(27) not null,
@@ -56,7 +57,7 @@ create table Pescatore (
     CognomeP varchar(30)
 );
 
-drop table Domanda;
+drop table Pescatore;
 
 create table Progetto (
     CodProg integer primary key,
@@ -124,14 +125,16 @@ create table Imbarcazione (
 drop table Imbarcazione;
 
 create table UscitaPescatore (
-    CodFisc char(16) primary key,
-    IdOp integer not null
+    CodFisc char(16),
+    IdOp integer,
+    primary key (CodFisc, IdOp)
 );
 drop table UscitaPescatore;
 
 create table UscitaRicercatore (
-    CodFisc char(16) primary key,
-    IdOp integer not null
+    CodFisc char(16),
+    IdOp integer,
+    primary key (CodFisc,IdOp)
 );
 drop table UscitaRicercatore;
 
@@ -190,6 +193,16 @@ insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('DCCMRT89F10K212L'
 insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('BNCDBR81I03D110W','IT47S0300203280992657365563','Debora','Bianchi');
 insert into Pescatore(CodFisc, Iban, NomeP, CognomeP) values ('SRGRRT90L01I607X','IT19R0300203280396558915351','Roberto','Soraggi');
 
+
+insert into UscitaPescatore(CodFisc, IdOp) values ('RSSGLN88C12G631L',1);
+insert into UscitaPescatore(CodFisc, IdOp) values ('VRDFRC72E26D145W',1);
+insert into UscitaPescatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',2);
+insert into UscitaPescatore(CodFisc, IdOp) values ('DCCMRT89F10K212L',2);
+insert into UscitaPescatore(CodFisc, IdOp) values ('BNCDBR81I03D110W',3);
+insert into UscitaPescatore(CodFisc, IdOp) values ('DCCMRT89F10K212L',4);
+insert into UscitaPescatore(CodFisc, IdOp) values ('RSSGLN88C12G631L',5);
+insert into UscitaPescatore(CodFisc, IdOp) values ('BNCDBR81I03D110W',6);
+
 insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CPPFNC69T09F315F', 'Franco','Ceppi');
 insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CHLGCM73L01E388X', 'Giacomo','Chiola');
 insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('PNTLSS80B28E388T', 'Alessia','Pantani');
@@ -198,6 +211,13 @@ insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CLLGPP84L01D696J', 'G
 insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('GVNNGL90T30C252V', 'Angelo','Giovannetti');
 insert into Ricercatore(CodFisc, NomeR, CognomeR) values ('CRDCCL85A41F789X', 'Cecilia','Caredio');
 
+insert into UscitaRicercatore(CodFisc, IdOp) values ('CPPFNC69T09F315F',1);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('CHLGCM73L01E388X',2);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('PNTLSS80B28E388T',2);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('RVRVSS63R41G185P',3);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('CLLGPP84L01D696J',4);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('GVNNGL90T30C252V',5);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('CRDCCL85A41F789X',6);
 
 insert into Partecipazione(CodProg, CodFisc) values (1021,'PNTLSS80B28E388T');
 insert into Partecipazione(CodProg, CodFisc) values (1021,'CHLGCM73L01E388X');
@@ -238,23 +258,6 @@ insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbar
 insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (4,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 1, '2021-09-27');
 insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (5,17,'S','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 1, '2021-10-05');
 insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (6,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 2, '2021-10-14');
-
-insert into UscitaPescatore(CodFisc, IdOp) values ('RSSGLN88C12G631L',1);
-insert into UscitaPescatore(CodFisc, IdOp) values ('VRDFRC72E26D145W',1);
-insert into UscitaPescatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',2);
-insert into UscitaPescatore(CodFisc, IdOp) values ('DCCMRT89F10K212L',2);
-insert into UscitaPescatore(CodFisc, IdOp) values ('BNCDBR81I03D110W',3);
-insert into UscitaPescatore(CodFisc, IdOp) values ('CLLGPP84L01D696J',4);
-insert into UscitaPescatore(CodFisc, IdOp) values ('PNTLSS80B28E388T',5);
-insert into UscitaPescatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',6);
-
-insert into UscitaRicercatore(CodFisc, IdOp) values ('CPPFNC69T09F315F',1);
-insert into UscitaRicercatore(CodFisc, IdOp) values ('CHLGCM73L01E388X',2);
-insert into UscitaRicercatore(CodFisc, IdOp) values ('PNTLSS80B28E388T',2);
-insert into UscitaRicercatore(CodFisc, IdOp) values ('RVRVSS63R41G185P',3);
-insert into UscitaRicercatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',4);
-insert into UscitaRicercatore(CodFisc, IdOp) values ('GVNNGL90T30C252V',5);
-insert into UscitaRicercatore(CodFisc, IdOp) values ('RVRVSS63R41G185P',6);
 
 insert into Utilizzo(IdBarca, IdOp) values ('AL635', 1);
 insert into Utilizzo(IdBarca, IdOp) values ('GS870', 2);
@@ -336,5 +339,21 @@ delete from Imbarcazione;
 delete from OperazioneDiPesca;
 
 delete from AnimalePescato;
+
+select * from OperazioneDiPesca;
+select * from UscitaPescatore;
+select * from Pescatore;
+
+select Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc IN (
+select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp where OperazioneDiPesca.data = '2021-08-17');
+
+
+
+select Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc = (
+select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp where OperazioneDiPesca.data = '2021-09-27');
+
+
+
+
 
 
