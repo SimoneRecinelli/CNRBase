@@ -305,3 +305,24 @@ insert into TerzoIntermediario (NomeBanca, Iban) values ('BPER BANCA JESI', 'IT0
 insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI OSIMO', 'IT87M0300203280363139846759');
 
 
+update Contratto set NomeDitta = 'Risorsa Pesca', ParIVA = '24439610684' where NumOrd = 509;
+
+update TerzoIntermediario set NomeBanca = 'CASSA DI RISPARMIO DI FERMO', Iban = 'IT27M0300203280614544824587' where NomeBanca = 'INTESA SAN PAOLO ANCONA';
+update TerzoIntermediario set Iban = 'IT27M0300203280614544824587' where NomeBanca = 'BPER BANCA JESI';
+
+update Ricercatore set NomeR = 'Maria',CodFisc = 'QLNMRA81L41D974V' where CognomeR = 'Paciocco';
+update Ricercatore set CognomeR = 'Cilli', CodFisc = 'CLLGPP69R01A681V' where NomeR = 'Giuseppe';
+update Ricercatore set CodFisc = 'FRZRRT96L01G798X', NomeR = 'Roberto', CognomeR = 'Frazzei' where CodFisc = 'RVRVSS63R41G185P';
+
+update Progetto set Budget = 45000.00 where CodProg = 622;
+
+update Pescatore set NomeP = 'Luana', CodFisc = 'BNCLNU78D01F910Z' where CodFisc = 'BNCDBR81I03D110W';
+update Pescatore set CognomeP = 'Barberini', CodFisc = 'BRBGLN70H01F750Y' where NomeP = 'Giuliano';
+update Pescatore set CodFisc = 'NTNNTN89P01H089L', NomeP = 'Antonio', CognomeP = 'Antonacci' where CodFisc = 'DCCMRT89F10K212L';
+update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNTN89P01H089L';
+
+update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
+
+
+
+
