@@ -324,5 +324,6 @@ update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNT
 update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
 
 
+update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
 
 
