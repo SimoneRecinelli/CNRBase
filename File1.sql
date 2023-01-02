@@ -344,19 +344,16 @@ select * from OperazioneDiPesca;
 select * from UscitaPescatore;
 select * from Pescatore;
 
-select distinct Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc IN (
+select Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc IN (
 select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp where OperazioneDiPesca.data = '2021-08-17');
 
-select distinct Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc = (
+
+
+select Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc = (
 select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp where OperazioneDiPesca.data = '2021-09-27');
 
-select distinct  Imbarcazione.Attrezzo from Imbarcazione inner join Utilizzo on  Imbarcazione.IdBarca = Utilizzo.IdBarca where Imbarcazione.IdBarca IN
-                                                                                                                               (select Utilizzo.IdBarca from Utilizzo inner join Cattura on Utilizzo.IdOp = Cattura.IdOp where Cattura.IdPesce = 728);
-select * from Domanda;
-select * from RDA;
 
-select QBarche from RDA R inner join Domanda D on R.NumOrd = D.NumOrd where D.CodFisc = 'CLLGPP84L01D696J';
 
-select LFT from Imbarcazione I inner join Possesso P on I.IdBarca = P.IdBarca where P.CodFisc = 'DCCMRT89F10K212L';
 
-select * from Imbarcazione;
+
+
