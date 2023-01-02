@@ -142,7 +142,7 @@ create table AnimalePescato (
     Sesso varchar(1),
     Lunghezza decimal (5,2),
     Peso decimal (5,3),
-    StadioMat varchar(2),
+    StadioMat varchar(2)
 );
 drop table AnimalePescato;
 show tables;
@@ -245,14 +245,14 @@ insert into UscitaPescatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',2);
 insert into UscitaPescatore(CodFisc, IdOp) values ('DCCMRT89F10K212L',2);
 insert into UscitaPescatore(CodFisc, IdOp) values ('BNCDBR81I03D110W',3);
 insert into UscitaPescatore(CodFisc, IdOp) values ('CLLGPP84L01D696J',4);
-insert into UscitaPescatore(CodFisc, IdOp) values ('RSSGLN88C12G631L',5);
+insert into UscitaPescatore(CodFisc, IdOp) values ('PNTLSS80B28E388T',5);
 insert into UscitaPescatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',6);
 
 insert into UscitaRicercatore(CodFisc, IdOp) values ('CPPFNC69T09F315F',1);
 insert into UscitaRicercatore(CodFisc, IdOp) values ('CHLGCM73L01E388X',2);
 insert into UscitaRicercatore(CodFisc, IdOp) values ('PNTLSS80B28E388T',2);
 insert into UscitaRicercatore(CodFisc, IdOp) values ('RVRVSS63R41G185P',3);
-insert into UscitaRicercatore(CodFisc, IdOp) values ('CPPFNC69T09F315F',4);
+insert into UscitaRicercatore(CodFisc, IdOp) values ('ZMPMRC76A08G439W',4);
 insert into UscitaRicercatore(CodFisc, IdOp) values ('GVNNGL90T30C252V',5);
 insert into UscitaRicercatore(CodFisc, IdOp) values ('RVRVSS63R41G185P',6);
 
@@ -283,7 +283,7 @@ insert into Cattura(IdOp, IdPesce) values (6,3970);
 insert into Cattura(IdOp, IdPesce) values (6,4650);
 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (728, 'Scampo', 'C' , 'M', 000.18, 00.078, '1A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat)values (352, 'Scampo', 'N' , 'F', 000.12, 00.069, '3A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (352, 'Scampo', 'N' , 'F', 000.12, 00.069, '3A');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (96, 'Scampo', 'N' , 'F', 000.11, 00.066, '2B');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (1233, 'Scampo', 'C' , 'M', 000.20, 00.085, '3A');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (6991, 'Scampo', 'N' , 'F', 000.14, 00.072, '1B');
@@ -297,4 +297,11 @@ insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (2950, 'Vongola', 'C' , 'M', 000.17, 00.024, '3A');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (3970, 'Vongola', 'S' , 'M', 000.23, 00.029, '1A');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (4650, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
+
+insert into TerzoIntermediario (NomeBanca, Iban) values ('INTESA SANPAOLO ANCONA', 'IT26P0300203280125987967226');
+insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI FERMO', 'IT30J0300203280389517818243');
+insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI MACERATA', 'IT62Q0300203280436789312589');
+insert into TerzoIntermediario (NomeBanca, Iban) values ('BPER BANCA JESI', 'IT03H0300203280667622585623');
+insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI OSIMO', 'IT87M0300203280363139846759');
+
 
