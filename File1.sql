@@ -352,8 +352,8 @@ select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca
 select Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc = (
 select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp where OperazioneDiPesca.data = '2021-09-27');
 
-
-
+-- consultazione data in cui è stato pescato un animale
+select OperazioneDiPesca.data from OperazioneDiPesca inner join Cattura C on OperazioneDiPesca.IdOp = C.IdOp where C.IdPesce = '522';
 
 
 
