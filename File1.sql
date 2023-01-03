@@ -460,6 +460,8 @@ on AP.IdPesce = C.IdPesce
 where C.IdOp IN (
     select OP.IdOp
     from OperazioneDiPesca OP
+    inner join Cattura C2
+    on OP.IdOp = C2.IdOp
     where OP.data = '2021-09-13'
     );
 
@@ -493,6 +495,10 @@ where A.Nome = 'Merluzzo' and C.IdOp IN (
     from OperazioneDiPesca Op
     where Op.data between '2021-08-10' and '2021-10-01'
     );
+
+select * from operazionedipesca;
+select * from AnimalePescato;
+select * from cattura;
 
 select COUNT(AP.IdPesce) as Numero_Animali_Pescati
 from AnimalePescato AP
