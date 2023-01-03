@@ -406,7 +406,7 @@ insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI 
 
 
 
-select distinct nomeP, CognomeP
+select distinct nomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
 from Pescatore P
 inner join UscitaPescatore UP
 on P.CodFisc = UP.CodFisc
@@ -415,7 +415,8 @@ select UP2.CodFisc
 from UscitaPescatore UP2
 inner join OperazioneDiPesca OP
 on UP2.IdOp = OP.IdOp
-where OP.data = '2021-08-17');
+where OP.data = '2021-08-17')
+ORDER BY P.NomeP ASC, P.CognomeP ASC;
 
 select distinct  Attrezzo
 from Imbarcazione I
@@ -440,7 +441,7 @@ inner join Possesso P
 on I.IdBarca = P.IdBarca
 where P.CodFisc = 'DCCMRT89F10K212L';
 
-select data
+select Op.data
 from OperazioneDiPesca OP
 inner join Cattura C
 on OP.IdOp = C.IdOp
@@ -452,15 +453,13 @@ inner join Utilizzo U
 on I.IdBarca = U.IdBarca
 where U.IdOp = 6;
 
-select SUM(Peso)
+select SUM(Peso) as Peso_Totale
 from AnimalePescato AP
 inner join Cattura C
 on AP.IdPesce = C.IdPesce
 where C.IdOp IN (
     select OP.IdOp
     from OperazioneDiPesca OP
-    inner join Cattura C2
-    on OP.IdOp = C2.IdOp
     where OP.data = '2021-09-13'
     );
 
@@ -495,10 +494,6 @@ where A.Nome = 'Merluzzo' and C.IdOp IN (
     where Op.data between '2021-08-10' and '2021-10-01'
     );
 
-select * from operazionedipesca;
-select * from AnimalePescato;
-select * from cattura;
-
 select COUNT(AP.IdPesce) as Numero_Animali_Pescati
 from AnimalePescato AP
 inner join Cattura C
@@ -507,4 +502,21 @@ where AP.CatComm = 'C' and C.IdOp IN (
     select OP.IdOp
     from OperazioneDiPesca OP
     where OP.data between '2021-08-10' and '2021-10-01'
-    )
+    );
+
+select P.NomeP, P.CognomeP
+from Pescatore P
+inner join Possesso Poss
+on P.CodFisc = Poss.CodFisc
+where Poss.IdBarca IN (
+    select I.IdBarca
+    from Imbarcazione I
+    inner join Utilizzo U
+        on I.IdBarca = U.IdBarca
+        where I.Attrezzo='Palamito fisso' and U.IdOp IN (
+            select OP.IdOp
+            from OperazioneDiPesca OP
+            where OP.data = '2021-08-17'
+        )
+    );
+
