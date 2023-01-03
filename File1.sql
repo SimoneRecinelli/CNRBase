@@ -394,7 +394,7 @@ insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) 
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (3750, 'Vongola', 'C' , 'M', 000.20, 00.025, '2A');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (2450, 'Vongola', 'C' , 'M', 000.22, 00.022, '2B');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (2950, 'Vongola', 'C' , 'M', 000.17, 00.024, '3A');
-insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (3970, 'Vongola', 'S' , 'M', 000.23, 00.029, '1A');
+insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (3970, 'Vongola', 'N' , 'M', 000.23, 00.029, '1A');
 insert into AnimalePescato(IdPesce,Nome,CatComm,Sesso,Lunghezza,Peso,StadioMat) values (4650, 'Vongola', 'C' , 'M', 000.21, 00.027, '3B');
 
 insert into TerzoIntermediario (NomeBanca, Iban) values ('INTESA SANPAOLO ANCONA', 'IT26P0300203280125987967226');
