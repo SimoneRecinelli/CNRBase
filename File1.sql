@@ -460,6 +460,8 @@ on AP.IdPesce = C.IdPesce
 where C.IdOp IN (
     select OP.IdOp
     from OperazioneDiPesca OP
+    inner join Cattura C2
+    on OP.IdOp = C2.IdOp
     where OP.data = '2021-09-13'
     );
 
@@ -494,6 +496,10 @@ where A.Nome = 'Merluzzo' and C.IdOp IN (
     where Op.data between '2021-08-10' and '2021-10-01'
     );
 
+select * from operazionedipesca;
+select * from AnimalePescato;
+select * from cattura;
+
 select COUNT(AP.IdPesce) as Numero_Animali_Pescati
 from AnimalePescato AP
 inner join Cattura C
@@ -512,11 +518,31 @@ where Poss.IdBarca IN (
     select I.IdBarca
     from Imbarcazione I
     inner join Utilizzo U
-        on I.IdBarca = U.IdBarca
-        where I.Attrezzo='Palamito fisso' and U.IdOp IN (
+    on I.IdBarca = U.IdBarca
+    where I.Attrezzo='Palamito fisso' and U.IdOp IN (
             select OP.IdOp
             from OperazioneDiPesca OP
             where OP.data = '2021-08-17'
         )
     );
 
+select * from Imbarcazione;
+select * from Utilizzo;
+select * from OperazioneDiPesca;
+select * from Cattura;
+select * from AnimalePescato;
+
+select I.IdBarca, I.PortoA , I.PortoP
+from Imbarcazione I
+inner join Utilizzo U
+on I.IdBarca = U.IdBarca
+where U.IdOp IN (
+    select Op.IdOp
+    from OperazioneDiPesca Op
+    inner join Cattura C
+    on Op.IdOp = C.IdOp
+    where Op.IdOp = 3 and C.IdPesce In (
+        select AnimalePescato.IdPesce
+        from AnimalePescato
+        where Nome = 'Merluzzo')
+);
