@@ -31,6 +31,7 @@ delete from Imbarcazione where 1;
 delete from OperazioneDiPesca where 1;
 
 delete from AnimalePescato where 1;
+show tables;
 
 drop table AnimalePescato;
 drop table Cattura;
@@ -46,6 +47,10 @@ drop table TerzoIntermediario;
 drop table UscitaPescatore;
 drop table UscitaRicercatore;
 drop table Utilizzo;
+drop table RDA;
+drop table Possesso;
+drop table Ricercatore;
+drop table Progetto;
 
  create table Irbim (
      SedeAmm varchar(30) primary key,
@@ -471,3 +476,9 @@ where UP.IdOp IN(
     on OP.IdOp = C.IdOp
     where C.IdPesce = 6991
     );
+
+select RDA.NumOrd, Ricercatore.NomeR, Ricercatore.CognomeR
+from RDA ,Ricercatore
+inner join Domanda D
+on Ricercatore.CodFisc = D.CodFisc
+where D.NumOrd = 102 and RDA.NumOrd = 102;
