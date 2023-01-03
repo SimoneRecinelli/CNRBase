@@ -486,8 +486,3 @@ on rda.NumOrd = D.NumOrd
 where R.CodFisc = D.CodFisc;
 
 
-select RDA.NumOrd, Ricercatore.NomeR, Ricercatore.CognomeR
-from RDA ,Ricercatore
-inner join Domanda D
-on Ricercatore.CodFisc = D.CodFisc
-where D.NumOrd = 102 and RDA.NumOrd = 102;
