@@ -1,39 +1,89 @@
 use cnrbase;
+
+update Contratto set NomeDitta = 'Risorsa Pesca', ParIVA = '24439610684' where NumOrd = 509;
+
+update TerzoIntermediario set NomeBanca = 'CASSA DI RISPARMIO DI FERMO', Iban = 'IT27M0300203280614544824587' where NomeBanca = 'INTESA SAN PAOLO ANCONA';
+update TerzoIntermediario set Iban = 'IT27M0300203280614544824587' where NomeBanca = 'BPER BANCA JESI';
+
+update Ricercatore set NomeR = 'Maria',CodFisc = 'QLNMRA81L41D974V' where CognomeR = 'Paciocco';
+update Ricercatore set CognomeR = 'Cilli', CodFisc = 'CLLGPP69R01A681V' where NomeR = 'Giuseppe';
+update Ricercatore set CodFisc = 'FRZRRT96L01G798X', NomeR = 'Roberto', CognomeR = 'Frazzei' where CodFisc = 'RVRVSS63R41G185P';
+
+update Progetto set Budget = 45000.00 where CodProg = 622;
+
+update Pescatore set NomeP = 'Luana', CodFisc = 'BNCLNU78D01F910Z' where CodFisc = 'BNCDBR81I03D110W';
+update Pescatore set CognomeP = 'Barberini', CodFisc = 'BRBGLN70H01F750Y' where NomeP = 'Giuliano';
+update Pescatore set CodFisc = 'NTNNTN89P01H089L', NomeP = 'Antonio', CognomeP = 'Antonacci' where CodFisc = 'DCCMRT89F10K212L';
+update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNTN89P01H089L';
+
+update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
+
+update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = '1', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
+
+update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
+
+delete from Pescatore;
+
+delete from Contratto where NomeDitta = 'Cuore ittico SAS';
+
+delete from Imbarcazione;
+
+delete from OperazioneDiPesca;
+
+delete from AnimalePescato;
+
+drop table AnimalePescato;
+drop table Cattura;
+drop table Contratto;
+drop table Domanda;
+drop table Fattura;
+drop table Imbarcazione;
+drop table Irbim;
+drop table OperazioneDiPesca;
+drop table Partecipazione;
+drop table Pescatore;
+drop table TerzoIntermediario;
+drop table UscitaPescatore;
+drop table UscitaRicercatore;
+drop table Utilizzo;
+
  create table Irbim (
      SedeAmm varchar(30) primary key,
      ParIVA char(11) not null,
      Figura varchar(30)
      );
-drop table Irbim;
+
 
 create table Fattura (
     NumOrd integer primary key,
-    CostoTot numeric(8,2),
-    QBarche smallint,
+    CostoTot numeric(8,2) not null,
+    QBarche smallint not null default 1
+                      check ( QBarche > 0 ),
     Cedente varchar(30) not null,
     Cessionario varchar(40) not null
     );
 
-drop table Fattura;
+
 
 
 create table RDA(
     NumOrd integer primary key,
     CostoTot numeric(8,2),
-    QBarche smallint
+    QBarche smallint not null default 1
+            check ( QBarche > 0 )
 );
 
-drop table RDA;
 
 create table Contratto (
     NumOrd integer primary key,
     CostTot decimal(8,2),
-    QBarche smallint,
+    QBarche smallint not null default 1
+                       check ( QBarche > 0 ),
     NomeDitta varchar(30),
     ParIVA char(11) not null
 );
 
-drop table Contratto;
+
 
 create table TerzoIntermediario(
     NomeBanca varchar(30),
@@ -41,14 +91,20 @@ create table TerzoIntermediario(
     primary key(NomeBanca,Iban)
 );
 
-drop table TerzoIntermediario;
+
 
 create table Domanda (
-    NumOrd integer,
-    CodFisc char(16),
+    NumOrd integer
+        references RDA(NumOrd)
+        on update cascade
+        on delete no action,
+    CodFisc char(16)
+        references Pescatore(CodFisc)
+        on update cascade
+        on delete no action,
     primary key (NumOrd,CodFisc)
 );
- drop table Domanda;
+
 
 create table Pescatore (
     CodFisc char(16) primary key,
@@ -57,13 +113,14 @@ create table Pescatore (
     CognomeP varchar(30)
 );
 
-drop table Pescatore;
+
 
 create table Progetto (
     CodProg integer primary key,
     Budget decimal(8,2) not null
+                      check ( Budget > 0 )
 );
-drop table Progetto;
+
 
 create table Partecipazione(
     CodProg integer,
@@ -71,7 +128,7 @@ create table Partecipazione(
     primary key(CodProg,CodFisc)
 );
 
-drop table Partecipazione;
+
 
 create table Ricercatore(
     CodFisc char(16) primary key,
@@ -79,76 +136,110 @@ create table Ricercatore(
     CognomeR varchar(30)
 );
 
-drop table Ricercatore;
+
 
 create table Possesso(
-     IdBarca varchar(8),
-     CodFisc char(16),
+     IdBarca varchar(8)
+                     references Imbarcazione(IdBarca)
+                     on update cascade
+                     on delete no action,
+     CodFisc char(16)
+                     references Pescatore(CodFisc)
+                     on update cascade
+                     on delete no action,
      primary key(IdBarca,CodFisc)
 );
-drop table Possesso;
+
 
 create table OperazioneDiPesca(
     IdOp integer primary key,
-    GSA smallint,
+    GSA smallint not null,
     TipoOss char(1),
     LatI varchar(15),
     LatF varchar(15),
     LongI varchar(15),
     LongF varchar(15),
-    Qbarche smallint,
+    Qbarche smallint not null default 1
+                              check ( Qbarche > 0 ),
     data date
 );
-drop table OperazioneDiPesca;
+
 
 create table Utilizzo(
-    IdBarca varchar(8),
-    IdOp integer,
+    IdBarca varchar(8)
+                     references Imbarcazione(IdBarca)
+                     on update cascade
+                     on delete no action,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
     primary key(IdBarca,IdOp)
 );
-drop table Utilizzo;
+
 
 create table Cattura(
-    IdOp integer,
-    IdPesce integer,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
+    IdPesce integer
+                     references AnimalePescato(IdPesce)
+                     on update cascade
+                     on delete no action,
     primary key(IdOp,IdPesce)
 );
-drop table Cattura;
+
 
 create table Imbarcazione (
     IdBarca varchar(8) primary key,
-    Attrezzo varchar(30),
-    LFT decimal(4,2),
-    PortoP varchar(20),
-    PortoA varchar(20)
+    Attrezzo varchar(30) not null,
+    LFT decimal(4,2)
+                          check ( LFT > 0 ),
+    PortoP varchar(20) not null,
+    PortoA varchar(20) not null
 );
-drop table Imbarcazione;
+
 
 create table UscitaPescatore (
-    CodFisc char(16),
-    IdOp integer,
+    CodFisc char(16)
+                     references Pescatore(CodFisc)
+                     on update cascade
+                     on delete no action,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
     primary key (CodFisc, IdOp)
 );
-drop table UscitaPescatore;
+
 
 create table UscitaRicercatore (
-    CodFisc char(16),
-    IdOp integer,
+    CodFisc char(16)
+                     references Ricercatore(CodFisc)
+                     on update cascade
+                     on delete no action,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
     primary key (CodFisc,IdOp)
 );
-drop table UscitaRicercatore;
+
 
 create table AnimalePescato (
     IdPesce integer primary key,
-    Nome varchar(20),
+    Nome varchar(20) not null,
     CatComm varchar(20),
-    Sesso varchar(1),
-    Lunghezza decimal (5,2),
-    Peso decimal (5,3),
+    Sesso varchar(1) not null,
+    Lunghezza decimal (5,2)
+                            check (Lunghezza > 0),
+    Peso decimal (5,3)
+                            check (Peso > 0),
     StadioMat varchar(2)
 );
-drop table AnimalePescato;
-show tables;
+
+
 
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Ancona', 21145647324, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Mazara Del Vallo', 34528374621, 'Amministratore');
@@ -308,58 +399,62 @@ insert into TerzoIntermediario (NomeBanca, Iban) values ('BPER BANCA JESI', 'IT0
 insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI OSIMO', 'IT87M0300203280363139846759');
 
 
-update Contratto set NomeDitta = 'Risorsa Pesca', ParIVA = '24439610684' where NumOrd = 509;
 
-update TerzoIntermediario set NomeBanca = 'CASSA DI RISPARMIO DI FERMO', Iban = 'IT27M0300203280614544824587' where NomeBanca = 'INTESA SAN PAOLO ANCONA';
-update TerzoIntermediario set Iban = 'IT27M0300203280614544824587' where NomeBanca = 'BPER BANCA JESI';
 
-update Ricercatore set NomeR = 'Maria',CodFisc = 'QLNMRA81L41D974V' where CognomeR = 'Paciocco';
-update Ricercatore set CognomeR = 'Cilli', CodFisc = 'CLLGPP69R01A681V' where NomeR = 'Giuseppe';
-update Ricercatore set CodFisc = 'FRZRRT96L01G798X', NomeR = 'Roberto', CognomeR = 'Frazzei' where CodFisc = 'RVRVSS63R41G185P';
+select distinct Pescatore.nomeP, Pescatore.CognomeP
+from Pescatore
+inner join UscitaPescatore
+on Pescatore.CodFisc = UscitaPescatore.CodFisc
+where Pescatore.CodFisc IN (
+select UscitaPescatore.CodFisc
+from UscitaPescatore
+inner join OperazioneDiPesca
+on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp
+where OperazioneDiPesca.data = '2021-08-17');
 
-update Progetto set Budget = 45000.00 where CodProg = 622;
+select distinct  Imbarcazione.Attrezzo
+from Imbarcazione
+inner join Utilizzo
+on  Imbarcazione.IdBarca = Utilizzo.IdBarca
+where Imbarcazione.IdBarca IN (
+select Utilizzo.IdBarca
+from Utilizzo
+inner join Cattura
+on Utilizzo.IdOp = Cattura.IdOp
+where Cattura.IdPesce = 728);
 
-update Pescatore set NomeP = 'Luana', CodFisc = 'BNCLNU78D01F910Z' where CodFisc = 'BNCDBR81I03D110W';
-update Pescatore set CognomeP = 'Barberini', CodFisc = 'BRBGLN70H01F750Y' where NomeP = 'Giuliano';
-update Pescatore set CodFisc = 'NTNNTN89P01H089L', NomeP = 'Antonio', CognomeP = 'Antonacci' where CodFisc = 'DCCMRT89F10K212L';
-update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNTN89P01H089L';
+select QBarche
+from RDA R
+inner join Domanda D
+on R.NumOrd = D.NumOrd
+where D.CodFisc = 'CLLGPP84L01D696J';
 
-update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
+select I.LFT
+from Imbarcazione I
+inner join Possesso P
+on I.IdBarca = P.IdBarca
+where P.CodFisc = 'DCCMRT89F10K212L';
 
-update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = '1', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
+select OperazioneDiPesca.data
+from OperazioneDiPesca
+inner join Cattura C
+on OperazioneDiPesca.IdOp = C.IdOp
+where C.IdPesce = '522';
 
-update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
+select Imbarcazione.Attrezzo
+from Imbarcazione
+inner join Utilizzo U
+on Imbarcazione.IdBarca = U.IdBarca
+where U.IdOp = 6;
 
-delete from Pescatore;
-
-delete from Contratto where NomeDitta = 'Cuore ittico SAS';
-
-delete from Imbarcazione;
-
-delete from OperazioneDiPesca;
-
-delete from AnimalePescato;
-
-select * from OperazioneDiPesca;
-select * from UscitaPescatore;
-select * from Pescatore;
-
-select distinct Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc IN (
-select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp where OperazioneDiPesca.data = '2021-08-17');
-
-select distinct Pescatore.nomeP, Pescatore.CognomeP from Pescatore inner join UscitaPescatore on Pescatore.CodFisc = UscitaPescatore.CodFisc where Pescatore.CodFisc = (
-select UscitaPescatore.CodFisc from UscitaPescatore inner join OperazioneDiPesca on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp where OperazioneDiPesca.data = '2021-09-27');
-
-select distinct  Imbarcazione.Attrezzo from Imbarcazione inner join Utilizzo on  Imbarcazione.IdBarca = Utilizzo.IdBarca where Imbarcazione.IdBarca IN
-                                                                                                                               (select Utilizzo.IdBarca from Utilizzo inner join Cattura on Utilizzo.IdOp = Cattura.IdOp where Cattura.IdPesce = 728);
-select * from Domanda;
-select * from RDA;
-
-select QBarche from RDA R inner join Domanda D on R.NumOrd = D.NumOrd where D.CodFisc = 'CLLGPP84L01D696J';
-
-select LFT from Imbarcazione I inner join Possesso P on I.IdBarca = P.IdBarca where P.CodFisc = 'DCCMRT89F10K212L';
-
-select OperazioneDiPesca.data from OperazioneDiPesca inner join Cattura C on OperazioneDiPesca.IdOp = C.IdOp where C.IdPesce = '522';
-
-select * from Imbarcazione;
-select * from Possesso;
+select AnimalePescato.Peso
+from AnimalePescato
+inner join Cattura C
+on AnimalePescato.IdPesce = C.IdPesce
+where C.IdOp IN (
+    select OperazioneDiPesca.IdOp
+    from OperazioneDiPesca
+    inner join Cattura C2
+    on OperazioneDiPesca.IdOp = C2.IdOp
+    where OperazioneDiPesca.data = '2021-09-03'
+    );
