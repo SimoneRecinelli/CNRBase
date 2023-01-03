@@ -458,3 +458,16 @@ where C.IdOp IN (
     on OP.IdOp = C2.IdOp
     where OP.data = '2021-09-13'
     );
+
+
+select NomeP, CognomeP
+from Pescatore P
+inner join UscitaPescatore UP
+on P.CodFisc = UP.CodFisc
+where UP.IdOp IN(
+    select OP.IdOp
+    from OperazioneDiPesca OP
+    inner join Cattura C
+    on OP.IdOp = C.IdOp
+    where C.IdPesce = 6991
+    );
