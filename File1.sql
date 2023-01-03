@@ -464,7 +464,6 @@ where C.IdOp IN (
     where OP.data = '2021-09-13'
     );
 
-
 select NomeP, CognomeP
 from Pescatore P
 inner join UscitaPescatore UP
@@ -476,6 +475,16 @@ where UP.IdOp IN(
     on OP.IdOp = C.IdOp
     where C.IdPesce = 6991
     );
+
+select NomeDitta, ParIVA
+from Contratto;
+
+select RDA.NumOrd, R.NomeR, R.CognomeR
+from Ricercatore R, RDA rda
+inner join Domanda D
+on rda.NumOrd = D.NumOrd
+where R.CodFisc = D.CodFisc;
+
 
 select RDA.NumOrd, Ricercatore.NomeR, Ricercatore.CognomeR
 from RDA ,Ricercatore
