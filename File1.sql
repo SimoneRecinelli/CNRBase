@@ -532,14 +532,17 @@ select * from OperazioneDiPesca;
 select * from Cattura;
 select * from AnimalePescato;
 
-select Imbarcazione.PortoA , Imbarcazione.PortoP
-from Imbarcazione
-inner join Utilizzo
-on Imbarcazione.IdBarca = Utilizzo.IdBarca
-where Utilizzo.IdOp IN (select OperazioneDiPesca.IdOp
-                        from OperazioneDiPesca
-                                 inner join Cattura C
-                                            on OperazioneDiPesca.IdOp = C.IdOp
-                        where OperazioneDiPesca.IdOp = 3 and C.IdPesce In (select AnimalePescato.IdPesce
-                                            from AnimalePescato
-                                            where Nome = 'Merluzzo'));
+select I.IdBarca, I.PortoA , I.PortoP
+from Imbarcazione I
+inner join Utilizzo U
+on I.IdBarca = U.IdBarca
+where U.IdOp IN (
+    select Op.IdOp
+    from OperazioneDiPesca Op
+    inner join Cattura C
+    on Op.IdOp = C.IdOp
+    where Op.IdOp = 3 and C.IdPesce In (
+        select AnimalePescato.IdPesce
+        from AnimalePescato
+        where Nome = 'Merluzzo')
+);
