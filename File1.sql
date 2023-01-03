@@ -8,8 +8,9 @@ drop table Irbim;
 
 create table Fattura (
     NumOrd integer primary key,
-    CostoTot numeric(8,2),
-    QBarche smallint,
+    CostoTot numeric(8,2) not null,
+    QBarche smallint not null default 1
+                      check ( QBarche > 0 ),
     Cedente varchar(30) not null,
     Cessionario varchar(40) not null
     );
@@ -20,7 +21,8 @@ drop table Fattura;
 create table RDA(
     NumOrd integer primary key,
     CostoTot numeric(8,2),
-    QBarche smallint
+    QBarche smallint not null default 1
+            check ( QBarche > 0 )
 );
 
 drop table RDA;
@@ -28,7 +30,8 @@ drop table RDA;
 create table Contratto (
     NumOrd integer primary key,
     CostTot decimal(8,2),
-    QBarche smallint,
+    QBarche smallint not null default 1
+                       check ( QBarche > 0 ),
     NomeDitta varchar(30),
     ParIVA char(11) not null
 );
@@ -44,8 +47,14 @@ create table TerzoIntermediario(
 drop table TerzoIntermediario;
 
 create table Domanda (
-    NumOrd integer,
-    CodFisc char(16),
+    NumOrd integer
+        references RDA(NumOrd)
+        on update cascade
+        on delete no action,
+    CodFisc char(16)
+        references Pescatore(CodFisc)
+        on update cascade
+        on delete no action,
     primary key (NumOrd,CodFisc)
 );
  drop table Domanda;
@@ -62,6 +71,7 @@ drop table Pescatore;
 create table Progetto (
     CodProg integer primary key,
     Budget decimal(8,2) not null
+                      check ( Budget > 0 )
 );
 drop table Progetto;
 
@@ -82,69 +92,103 @@ create table Ricercatore(
 drop table Ricercatore;
 
 create table Possesso(
-     IdBarca varchar(8),
-     CodFisc char(16),
+     IdBarca varchar(8)
+                     references Imbarcazione(IdBarca)
+                     on update cascade
+                     on delete no action,
+     CodFisc char(16)
+                     references Pescatore(CodFisc)
+                     on update cascade
+                     on delete no action,
      primary key(IdBarca,CodFisc)
 );
 drop table Possesso;
 
 create table OperazioneDiPesca(
     IdOp integer primary key,
-    GSA smallint,
+    GSA smallint not null,
     TipoOss char(1),
     LatI varchar(15),
     LatF varchar(15),
     LongI varchar(15),
     LongF varchar(15),
-    Qbarche smallint,
+    Qbarche smallint not null default 1
+                              check ( Qbarche > 0 ),
     data date
 );
 drop table OperazioneDiPesca;
 
 create table Utilizzo(
-    IdBarca varchar(8),
-    IdOp integer,
+    IdBarca varchar(8)
+                     references Imbarcazione(IdBarca)
+                     on update cascade
+                     on delete no action,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
     primary key(IdBarca,IdOp)
 );
 drop table Utilizzo;
 
 create table Cattura(
-    IdOp integer,
-    IdPesce integer,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
+    IdPesce integer
+                     references AnimalePescato(IdPesce)
+                     on update cascade
+                     on delete no action,
     primary key(IdOp,IdPesce)
 );
 drop table Cattura;
 
 create table Imbarcazione (
     IdBarca varchar(8) primary key,
-    Attrezzo varchar(30),
-    LFT decimal(4,2),
-    PortoP varchar(20),
-    PortoA varchar(20)
+    Attrezzo varchar(30) not null,
+    LFT decimal(4,2)
+                          check ( LFT > 0 ),
+    PortoP varchar(20) not null,
+    PortoA varchar(20) not null
 );
 drop table Imbarcazione;
 
 create table UscitaPescatore (
-    CodFisc char(16),
-    IdOp integer,
+    CodFisc char(16)
+                     references Pescatore(CodFisc)
+                     on update cascade
+                     on delete no action,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
     primary key (CodFisc, IdOp)
 );
 drop table UscitaPescatore;
 
 create table UscitaRicercatore (
-    CodFisc char(16),
-    IdOp integer,
+    CodFisc char(16)
+                     references Ricercatore(CodFisc)
+                     on update cascade
+                     on delete no action,
+    IdOp integer
+                     references OperazioneDiPesca(IdOp)
+                     on update cascade
+                     on delete no action,
     primary key (CodFisc,IdOp)
 );
 drop table UscitaRicercatore;
 
 create table AnimalePescato (
     IdPesce integer primary key,
-    Nome varchar(20),
+    Nome varchar(20) not null,
     CatComm varchar(20),
-    Sesso varchar(1),
-    Lunghezza decimal (5,2),
-    Peso decimal (5,3),
+    Sesso varchar(1) not null,
+    Lunghezza decimal (5,2)
+                            check (Lunghezza > 0),
+    Peso decimal (5,3)
+                            check (Peso > 0),
     StadioMat varchar(2)
 );
 drop table AnimalePescato;
