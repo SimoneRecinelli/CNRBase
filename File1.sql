@@ -485,4 +485,26 @@ inner join Domanda D
 on rda.NumOrd = D.NumOrd
 where R.CodFisc = D.CodFisc;
 
+select AVG(A.Peso) as Media_peso , AVG(A.Lunghezza) as Media_Lunghezza
+from AnimalePescato A
+inner join Cattura C
+on A.IdPesce = C.IdPesce
+where A.Nome = 'Merluzzo' and C.IdOp IN (
+    select Op.IdOp
+    from OperazioneDiPesca Op
+    where Op.data between '2021-08-10' and '2021-10-01'
+    );
 
+select * from operazionedipesca;
+select * from AnimalePescato;
+select * from cattura;
+
+select COUNT(AP.IdPesce) as Numero_Animali_Pescati
+from AnimalePescato AP
+inner join Cattura C
+on Ap.IdPesce = C.IdPesce
+where AP.CatComm = 'C' and C.IdOp IN (
+    select OP.IdOp
+    from OperazioneDiPesca OP
+    where OP.data between '2021-08-10' and '2021-10-01'
+    )
