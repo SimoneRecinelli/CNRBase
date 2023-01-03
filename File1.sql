@@ -464,7 +464,7 @@ where C.IdOp IN (
     where OP.data = '2021-09-13'
     );
 
-select NomeP, CognomeP
+select NomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
 from Pescatore P
 inner join UscitaPescatore UP
 on P.CodFisc = UP.CodFisc
