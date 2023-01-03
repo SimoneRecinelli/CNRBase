@@ -518,11 +518,28 @@ where Poss.IdBarca IN (
     select I.IdBarca
     from Imbarcazione I
     inner join Utilizzo U
-        on I.IdBarca = U.IdBarca
-        where I.Attrezzo='Palamito fisso' and U.IdOp IN (
+    on I.IdBarca = U.IdBarca
+    where I.Attrezzo='Palamito fisso' and U.IdOp IN (
             select OP.IdOp
             from OperazioneDiPesca OP
             where OP.data = '2021-08-17'
         )
     );
 
+select * from Imbarcazione;
+select * from Utilizzo;
+select * from OperazioneDiPesca;
+select * from Cattura;
+select * from AnimalePescato;
+
+select Imbarcazione.PortoA , Imbarcazione.PortoP
+from Imbarcazione
+inner join Utilizzo
+on Imbarcazione.IdBarca = Utilizzo.IdBarca
+where Utilizzo.IdOp IN (select OperazioneDiPesca.IdOp
+                        from OperazioneDiPesca
+                                 inner join Cattura C
+                                            on OperazioneDiPesca.IdOp = C.IdOp
+                        where C.IdPesce In (select AnimalePescato.IdPesce
+                                            from AnimalePescato
+                                            where Nome = 'Merluzzo'));
