@@ -401,27 +401,27 @@ insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI 
 
 
 
-select distinct Pescatore.nomeP, Pescatore.CognomeP
-from Pescatore
-inner join UscitaPescatore
-on Pescatore.CodFisc = UscitaPescatore.CodFisc
-where Pescatore.CodFisc IN (
-select UscitaPescatore.CodFisc
-from UscitaPescatore
-inner join OperazioneDiPesca
-on UscitaPescatore.IdOp = OperazioneDiPesca.IdOp
-where OperazioneDiPesca.data = '2021-08-17');
+select distinct nomeP, CognomeP
+from Pescatore P
+inner join UscitaPescatore UP
+on P.CodFisc = UP.CodFisc
+where P.CodFisc IN (
+select UP2.CodFisc
+from UscitaPescatore UP2
+inner join OperazioneDiPesca OP
+on UP2.IdOp = OP.IdOp
+where OP.data = '2021-08-17');
 
-select distinct  Imbarcazione.Attrezzo
-from Imbarcazione
-inner join Utilizzo
-on  Imbarcazione.IdBarca = Utilizzo.IdBarca
-where Imbarcazione.IdBarca IN (
-select Utilizzo.IdBarca
-from Utilizzo
-inner join Cattura
-on Utilizzo.IdOp = Cattura.IdOp
-where Cattura.IdPesce = 728);
+select distinct  Attrezzo
+from Imbarcazione I
+inner join Utilizzo U
+on  I.IdBarca = U.IdBarca
+where I.IdBarca IN (
+select U2.IdBarca
+from Utilizzo U2
+inner join Cattura C
+on U2.IdOp = C.IdOp
+where C.IdPesce = 728);
 
 select QBarche
 from RDA R
@@ -429,32 +429,32 @@ inner join Domanda D
 on R.NumOrd = D.NumOrd
 where D.CodFisc = 'CLLGPP84L01D696J';
 
-select I.LFT
+select LFT
 from Imbarcazione I
 inner join Possesso P
 on I.IdBarca = P.IdBarca
 where P.CodFisc = 'DCCMRT89F10K212L';
 
-select OperazioneDiPesca.data
-from OperazioneDiPesca
+select data
+from OperazioneDiPesca OP
 inner join Cattura C
-on OperazioneDiPesca.IdOp = C.IdOp
+on OP.IdOp = C.IdOp
 where C.IdPesce = '522';
 
-select Imbarcazione.Attrezzo
-from Imbarcazione
+select Attrezzo
+from Imbarcazione I
 inner join Utilizzo U
-on Imbarcazione.IdBarca = U.IdBarca
+on I.IdBarca = U.IdBarca
 where U.IdOp = 6;
 
-select AnimalePescato.Peso
-from AnimalePescato
+select SUM(Peso)
+from AnimalePescato AP
 inner join Cattura C
-on AnimalePescato.IdPesce = C.IdPesce
+on AP.IdPesce = C.IdPesce
 where C.IdOp IN (
-    select OperazioneDiPesca.IdOp
-    from OperazioneDiPesca
+    select OP.IdOp
+    from OperazioneDiPesca OP
     inner join Cattura C2
-    on OperazioneDiPesca.IdOp = C2.IdOp
-    where OperazioneDiPesca.data = '2021-09-03'
+    on OP.IdOp = C2.IdOp
+    where OP.data = '2021-09-13'
     );
