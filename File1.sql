@@ -540,6 +540,6 @@ where Utilizzo.IdOp IN (select OperazioneDiPesca.IdOp
                         from OperazioneDiPesca
                                  inner join Cattura C
                                             on OperazioneDiPesca.IdOp = C.IdOp
-                        where C.IdPesce In (select AnimalePescato.IdPesce
+                        where OperazioneDiPesca.IdOp = 3 and C.IdPesce In (select AnimalePescato.IdPesce
                                             from AnimalePescato
                                             where Nome = 'Merluzzo'));
