@@ -71,6 +71,7 @@ create table Fattura (
 show tables;
 
 
+
 create table RDA(
     NumOrd integer primary key,
     CostoTot numeric(8,2),
@@ -403,8 +404,8 @@ insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI 
 insert into TerzoIntermediario (NomeBanca, Iban) values ('BPER BANCA JESI', 'IT03H0300203280667622585623');
 insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI OSIMO', 'IT87M0300203280363139846759');
 
-show tables;
-select * from AnimalePescato;
+
+
 
 select distinct nomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
 from Pescatore P
