@@ -642,11 +642,12 @@ where I.IdBarca IN (select U2.IdBarca
                                         on U2.IdOp = C.IdOp
                     where C.IdPesce = 728);
 
-select QBarche
+select R.NumOrd,R.QBarche
 from RDA R
          inner join Domanda D
                     on R.NumOrd = D.NumOrd
-where D.CodFisc = 'CLLGPP84L01D696J';
+where D.CodFisc = 'CLLGPP84L01D696J'
+order by QBarche ASC;
 
 select LFT
 from Imbarcazione I
