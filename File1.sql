@@ -54,9 +54,9 @@ set PortoA = 'La Spezia',
 where IdBarca = 'AL635';
 
 update OperazioneDiPesca
-set data    = '2023-01-02',
+set Data    = '2023-01-02',
     GSA     = '16',
-    TipoOss = '1',
+    TipoOss = 'S',
     LatI    = '47° 00 00 N',
     LatF    = '44° 00 00 N',
     LongI   = '13° 45 32 E',
@@ -629,7 +629,7 @@ where P.CodFisc IN (select UP2.CodFisc
                     from UscitaPescatore UP2
                              inner join OperazioneDiPesca OP
                                         on UP2.IdOp = OP.IdOp
-                    where OP.data = '2021-08-17')
+                    where OP.Data = '2021-08-17')
 ORDER BY P.NomeP ASC, P.CognomeP ASC;
 
 select distinct Attrezzo
@@ -674,7 +674,7 @@ where C.IdOp IN (select OP.IdOp
                  from OperazioneDiPesca OP
                           inner join Cattura C2
                                      on OP.IdOp = C2.IdOp
-                 where OP.data = '2021-09-13');
+                 where OP.Data = '2021-09-13');
 
 select NomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
 from Pescatore P
@@ -703,14 +703,7 @@ from AnimalePescato A
 where A.Nome = 'Merluzzo'
   and C.IdOp IN (select Op.IdOp
                  from OperazioneDiPesca Op
-                 where Op.data between '2021-08-10' and '2021-10-01');
-
-select *
-from operazionedipesca;
-select *
-from AnimalePescato;
-select *
-from cattura;
+                 where Op.Data between '2021-08-10' and '2021-10-01');
 
 select COUNT(AP.IdPesce) as Numero_Animali_Pescati
 from AnimalePescato AP
@@ -719,7 +712,7 @@ from AnimalePescato AP
 where AP.CatComm = 'C'
   and C.IdOp IN (select OP.IdOp
                  from OperazioneDiPesca OP
-                 where OP.data between '2021-08-10' and '2021-10-01');
+                 where OP.Data between '2021-08-10' and '2021-10-01');
 
 select P.NomeP, P.CognomeP
 from Pescatore P
@@ -732,18 +725,8 @@ where Poss.IdBarca IN (select I.IdBarca
                        where I.Attrezzo = 'Palamito fisso'
                          and U.IdOp IN (select OP.IdOp
                                         from OperazioneDiPesca OP
-                                        where OP.data = '2021-08-17'));
+                                        where OP.Data = '2021-08-17'));
 
-select *
-from Imbarcazione;
-select *
-from Utilizzo;
-select *
-from OperazioneDiPesca;
-select *
-from Cattura;
-select *
-from AnimalePescato;
 
 select I.IdBarca, I.PortoA, I.PortoP
 from Imbarcazione I
