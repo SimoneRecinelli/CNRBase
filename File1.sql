@@ -18,7 +18,7 @@ update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNT
 
 update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
 
-update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = '1', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
+update OperazioneDiPesca set Data = '2023-01-02', GSA = '16', TipoOss = '1', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
 
 update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
 
@@ -346,12 +346,12 @@ insert into Possesso(IdBarca, CodFisc) values ('CD902','BNCDBR81I03D110W');
 insert into Possesso(IdBarca, CodFisc) values ('AZ205','SRGRRT90L01I607X');
 insert into Possesso(IdBarca, CodFisc) values ('FH448','SRGRRT90L01I607X');
 
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (1,17,'S','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 1, '2021-08-17');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (2,17,'N','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 2, '2021-09-03');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (3,18,'N','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 2, '2021-09-13');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (4,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 1, '2021-09-27');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (5,17,'S','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 1, '2021-10-05');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data) values (6,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 2, '2021-10-14');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data) values (1,17,'S','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 1, '2021-08-17');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data) values (2,17,'N','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 2, '2021-09-03');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data) values (3,18,'N','43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 2, '2021-09-13');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data) values (4,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 1, '2021-09-27');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data) values (5,17,'S','45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 1, '2021-10-05');
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data) values (6,18,'S','44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 2, '2021-10-14');
 
 insert into Utilizzo(IdBarca, IdOp) values ('AL635', 1);
 insert into Utilizzo(IdBarca, IdOp) values ('GS870', 2);
@@ -413,7 +413,7 @@ select UP2.CodFisc
 from UscitaPescatore UP2
 inner join OperazioneDiPesca OP
 on UP2.IdOp = OP.IdOp
-where OP.data = '2021-08-17')
+where OP.Data = '2021-08-17')
 ORDER BY P.NomeP ASC, P.CognomeP ASC;
 
 select distinct  Attrezzo
@@ -439,7 +439,7 @@ inner join Possesso P
 on I.IdBarca = P.IdBarca
 where P.CodFisc = 'DCCMRT89F10K212L';
 
-select Op.data
+select Op.Data
 from OperazioneDiPesca OP
 inner join Cattura C
 on OP.IdOp = C.IdOp
@@ -460,7 +460,7 @@ where C.IdOp IN (
     from OperazioneDiPesca OP
     inner join Cattura C2
     on OP.IdOp = C2.IdOp
-    where OP.data = '2021-09-13'
+    where OP.Data = '2021-09-13'
     );
 
 select NomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
@@ -491,7 +491,7 @@ on A.IdPesce = C.IdPesce
 where A.Nome = 'Merluzzo' and C.IdOp IN (
     select Op.IdOp
     from OperazioneDiPesca Op
-    where Op.data between '2021-08-10' and '2021-10-01'
+    where Op.Data between '2021-08-10' and '2021-10-01'
     );
 
 select * from operazionedipesca;
@@ -505,7 +505,7 @@ on Ap.IdPesce = C.IdPesce
 where AP.CatComm = 'C' and C.IdOp IN (
     select OP.IdOp
     from OperazioneDiPesca OP
-    where OP.data between '2021-08-10' and '2021-10-01'
+    where OP.Data between '2021-08-10' and '2021-10-01'
     );
 
 select P.NomeP, P.CognomeP
@@ -520,7 +520,7 @@ where Poss.IdBarca IN (
     where I.Attrezzo='Palamito fisso' and U.IdOp IN (
             select OP.IdOp
             from OperazioneDiPesca OP
-            where OP.data = '2021-08-17'
+            where OP.Data = '2021-08-17'
         )
     );
 
