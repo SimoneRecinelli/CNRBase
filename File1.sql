@@ -740,3 +740,4 @@ where U.IdOp IN (select Op.IdOp
                    and C.IdPesce In (select AnimalePescato.IdPesce
                                      from AnimalePescato
                                      where Nome = 'Merluzzo'));
+
