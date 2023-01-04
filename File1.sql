@@ -514,17 +514,17 @@ values ('AZ205', 'SRGRRT90L01I607X');
 insert into Possesso(IdBarca, CodFisc)
 values ('FH448', 'SRGRRT90L01I607X');
 
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data)
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data)
 values (1, 17, 'S', '43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 1, '2021-08-17');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data)
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data)
 values (2, 17, 'N', '45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 2, '2021-09-03');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data)
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data)
 values (3, 18, 'N', '43° 00 00 N', '42° 51 00 N', '14° 56 00 E', '15° 16 00 E', 2, '2021-09-13');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data)
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data)
 values (4, 18, 'S', '44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 1, '2021-09-27');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data)
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data)
 values (5, 17, 'S', '45° 10 00 N', '45° 16 00 N', '12° 32 00 E', '12° 21 00 E', 1, '2021-10-05');
-insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, data)
+insert into OperazioneDiPesca(IdOp, GSA, TipoOss, LatI, LatF, LongI, LongF, Qbarche, Data)
 values (6, 18, 'S', '44° 00 00 N', '44° 07 00 N', '13° 38 50 E', '13° 50 00 E', 2, '2021-10-14');
 
 insert into Utilizzo(IdBarca, IdOp)
