@@ -18,7 +18,7 @@ update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNT
 
 update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
 
-update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = 'S', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
+update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = '1', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
 
 update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
 
@@ -67,9 +67,6 @@ create table Fattura (
     Cedente varchar(30) not null,
     Cessionario varchar(40) not null
     );
-
-show tables;
-
 
 
 create table RDA(
@@ -251,32 +248,32 @@ insert into Irbim (SedeAmm, ParIVA, Figura) values ('Ancona', 21145647324, 'Ammi
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Mazara Del Vallo', 34528374621, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura) values ('Lesina', 98726327436, 'Amministratore');
 
-insert into RDA (NumOrd, CostoTot, QBarche) values (1589, 1502.00, 10);
-insert into RDA (NumOrd, CostoTot, QBarche) values (1385, 2300.00, 15);
-insert into RDA (NumOrd, CostoTot, QBarche) values (4857, 1260.00, 8);
-insert into RDA (NumOrd, CostoTot, QBarche) values (3034, 3000.00, 20);
-insert into RDA (NumOrd, CostoTot, QBarche) values (4372, 6704.00, 40);
-insert into RDA (NumOrd, CostoTot, QBarche) values (509, 1198.00, 7);
-insert into RDA (NumOrd, CostoTot, QBarche) values (102, 5400.00, 35);
-insert into RDA (NumOrd, CostoTot, QBarche) values (8743, 3489.00, 23);
+insert into RDA (NumOrd, CostoTot, QBarche) values (1589, 1502.00, 2);
+insert into RDA (NumOrd, CostoTot, QBarche) values (1385, 2300.00, 1);
+insert into RDA (NumOrd, CostoTot, QBarche) values (4857, 1260.00, 3);
+insert into RDA (NumOrd, CostoTot, QBarche) values (3034, 3000.00, 3);
+insert into RDA (NumOrd, CostoTot, QBarche) values (4372, 6704.00, 2);
+insert into RDA (NumOrd, CostoTot, QBarche) values (509, 1198.00, 1);
+insert into RDA (NumOrd, CostoTot, QBarche) values (102, 5400.00, 3);
+insert into RDA (NumOrd, CostoTot, QBarche) values (8743, 3489.00, 2);
 
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (1589,1502.00, 10,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (1385,2300.00, 15,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (4857,1260.00, 8,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (3034,3000.00, 20,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (4372,6704.00, 40,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (509,1198.00, 7,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (102,5400.00, 35,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
-insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (8743,3489.00, 23,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (1589,1502.00, 2,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (1385,2300.00, 1,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (4857,1260.00, 3,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (3034,3000.00, 3,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (4372,6704.00, 2,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (509,1198.00, 1,'CASSA DI RISPARMIO DI FERMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (102,5400.00, 3,'CASSA DI RISPARMIO DI OSIMO','CNR ISTITUTO RISORSE BIOLOGICHE');
+insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario) values (8743,3489.00, 2,'CASSA DI RISPARMIO DI MACERATA','CNR ISTITUTO RISORSE BIOLOGICHE');
 
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (1589,1502.00, 10, 'F.lli Gianni Pesca SPA', 50982900529);
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (1385,2300.00, 15, 'Cuore ittico SAS', 60888610627);
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (4857,1260.00, 8, 'Emporio del Marinaio SPA', 74936370159);
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (3034,3000.00, 20, 'F.lli Gianni Pesca SAS', 50982900529);
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (4372,6704.00, 40, 'Cuore ittico SAS', 60888610627);
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (509,1198.00, 7, 'F.lli Gianni Pesca SPA', 50982900529);
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (102,5400.00, 35, 'Cuore ittico SAS', 60888610627);
-insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (8743,3489.00, 23, 'Emporio del Marinaio SPA', 74936370159);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (1589,1502.00, 2, 'F.lli Gianni Pesca SPA', 50982900529);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (1385,2300.00, 1, 'Cuore ittico SAS', 60888610627);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (4857,1260.00, 3, 'Emporio del Marinaio SPA', 74936370159);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (3034,3000.00, 3, 'F.lli Gianni Pesca SAS', 50982900529);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (4372,6704.00, 2, 'Cuore ittico SAS', 60888610627);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (509,1198.00, 1, 'F.lli Gianni Pesca SPA', 50982900529);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (102,5400.00, 3, 'Cuore ittico SAS', 60888610627);
+insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA) values (8743,3489.00, 2, 'Emporio del Marinaio SPA', 74936370159);
 
 insert into Progetto (CodProg, Budget) values (1021,023670.00);
 insert into Progetto (CodProg, Budget) values (874,018842.00);
@@ -403,6 +400,8 @@ insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI 
 insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI MACERATA', 'IT62Q0300203280436789312589');
 insert into TerzoIntermediario (NomeBanca, Iban) values ('BPER BANCA JESI', 'IT03H0300203280667622585623');
 insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI OSIMO', 'IT87M0300203280363139846759');
+
+
 
 
 select distinct nomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
@@ -545,18 +544,3 @@ where U.IdOp IN (
         from AnimalePescato
         where Nome = 'Merluzzo')
 );
-
-select TipoOss as Tipo_Osservazione
-from OperazioneDiPesca Op
-inner join UscitaRicercatore UR
-on UR.IdOp = Op.IdOp
-where UR.IdOp in(
-    select Op.IdOp
-    from OperazioneDiPesca Op
-    inner join UscitaRicercatore UR2
-    on UR.IdOp = Op.IdOp
-    where Op.IdOp = '2021-09-13'
-    );
-
-select * from OperazioneDiPesca;
-
