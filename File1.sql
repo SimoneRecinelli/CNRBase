@@ -621,7 +621,7 @@ values ('CASSA DI RISPARMIO DI OSIMO', 'IT87M0300203280363139846759');
 
 
 
-select distinct nomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
+select distinct P.nomeP as Nome_Pescatore, P.CognomeP as Cognome_Pescatore
 from Pescatore P
          inner join UscitaPescatore UP
                     on P.CodFisc = UP.CodFisc
@@ -649,7 +649,7 @@ from RDA R
 where D.CodFisc = 'CLLGPP84L01D696J'
 order by QBarche ASC;
 
-select LFT
+select I.LFT
 from Imbarcazione I
          inner join Possesso P
                     on I.IdBarca = P.IdBarca
