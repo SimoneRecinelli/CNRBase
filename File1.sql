@@ -18,7 +18,7 @@ update Pescatore set Iban = 'IT24Q0300203280833436497583' where CodFisc = 'NTNNT
 
 update Imbarcazione set PortoA = 'La Spezia', PortoP = 'La Spezia' where IdBarca = 'AL635';
 
-update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = '1', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
+update OperazioneDiPesca set data = '2023-01-02', GSA = '16', TipoOss = 'S', LatI = '47° 00 00 N', LatF = '44° 00 00 N', LongI = '13° 45 32 E', LongF = '15° 23 43 E', Qbarche = 5 where IdOp = 5;
 
 update AnimalePescato set Nome = 'Merluzzo', CatComm = 'S', Sesso = 'M', Lunghezza = '0.95', Peso = '15.620', StadioMat = '2B' where IdPesce = 6991;
 
@@ -405,8 +405,6 @@ insert into TerzoIntermediario (NomeBanca, Iban) values ('BPER BANCA JESI', 'IT0
 insert into TerzoIntermediario (NomeBanca, Iban) values ('CASSA DI RISPARMIO DI OSIMO', 'IT87M0300203280363139846759');
 
 
-
-
 select distinct nomeP as Nome_Pescatore, CognomeP as Cognome_Pescatore
 from Pescatore P
 inner join UscitaPescatore UP
@@ -547,3 +545,18 @@ where U.IdOp IN (
         from AnimalePescato
         where Nome = 'Merluzzo')
 );
+
+select TipoOss as Tipo_Osservazione
+from OperazioneDiPesca Op
+inner join UscitaRicercatore UR
+on UR.IdOp = Op.IdOp
+where UR.IdOp in(
+    select Op.IdOp
+    from OperazioneDiPesca Op
+    inner join UscitaRicercatore UR2
+    on UR.IdOp = Op.IdOp
+    where Op.IdOp = '2021-09-13'
+    );
+
+select * from OperazioneDiPesca;
+
