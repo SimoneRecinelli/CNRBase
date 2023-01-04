@@ -744,7 +744,9 @@ where U.IdOp IN (select Op.IdOp
 
 
 select OP.TipoOss, UR.CodFisc as Codice_Fiscale
-from OperazioneDiPesca OP
-inner join UscitaRicercatore UR
-on OP.IdOp = UR.IdOp
-where OP.Data = '2021-09-03';
+from  OperazioneDiPesca OP
+          inner join UscitaRicercatore UR
+                     on OP.IdOp = UR.IdOp
+where UR.IdOp IN (select OP2.IdOp
+                  from OperazioneDiPesca OP2
+                  where OP2.IdOp = 4 and OP2.data = '2021-09-27');
