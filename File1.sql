@@ -53,6 +53,10 @@ set PortoA = 'La Spezia',
     PortoP = 'La Spezia'
 where IdBarca = 'AL635';
 
+update Imbarcazione
+set Attrezzo = 'Tremaglio'
+where IdBarca = 'AZ205';
+
 update OperazioneDiPesca
 set Data    = '2023-01-02',
     GSA     = '16',
@@ -492,17 +496,17 @@ insert into Domanda(NumOrd, CodFisc)
 values (8743, 'CLLGPP84L01D696J');
 
 insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA)
-values ('AL635', 'Palamito fisso', 06.30, 'Ancona', 'Ancona');
+values ('AL635', 'Cogollo', 06.30, 'Ancona', 'Ancona');
 insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA)
-values ('GS870', 'Lenza a mano ', 05.80, 'Pescara', 'Pescara');
+values ('GS870', 'Lampara', 05.80, 'Pescara', 'Pescara');
 insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA)
-values ('ZC112', 'Draga automatica', 07.10, 'Ancona', 'Ancona');
+values ('ZC112', 'Nasse', 07.10, 'Ancona', 'Ancona');
 insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA)
-values ('CD902', 'Reti a strascico', 06.00, 'Ancona', 'Ancona');
+values ('CD902', 'Strascico', 06.00, 'Ancona', 'Ancona');
 insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA)
-values ('AZ205', 'Palamito fisso', 06.90, 'Bari', 'Bari');
+values ('AZ205', 'Vongolara', 06.90, 'Bari', 'Bari');
 insert into Imbarcazione(IdBarca, Attrezzo, LFT, PortoP, PortoA)
-values ('FH448', 'Draga a mano', 07.40, 'Ancona', 'Ancona');
+values ('FH448', 'Volante', 07.40, 'Ancona', 'Ancona');
 
 insert into Possesso(IdBarca, CodFisc)
 values ('AL635', 'RSSGLN88C12G631L');
@@ -728,7 +732,7 @@ where Poss.IdBarca IN (select I.IdBarca
                        from Imbarcazione I
                                 inner join Utilizzo U
                                            on I.IdBarca = U.IdBarca
-                       where I.Attrezzo = 'Palamito fisso'
+                       where I.Attrezzo = 'Cogollo'
                          and U.IdOp IN (select OP.IdOp
                                         from OperazioneDiPesca OP
                                         where OP.Data = '2021-08-17'));
@@ -746,3 +750,12 @@ where U.IdOp IN (select Op.IdOp
                    and C.IdPesce In (select AnimalePescato.IdPesce
                                      from AnimalePescato
                                      where Nome = 'Merluzzo'));
+
+
+select OP.TipoOss, UR.CodFisc as Codice_Fiscale
+from  OperazioneDiPesca OP
+          inner join UscitaRicercatore UR
+                     on OP.IdOp = UR.IdOp
+where UR.IdOp IN (select OP2.IdOp
+                  from OperazioneDiPesca OP2
+                  where OP2.IdOp = 4 and OP2.data = '2021-09-27');
