@@ -174,7 +174,7 @@ create table Domanda
             on update cascade
             on delete no action,
     CodFisc char(16)
-        references Pescatore (CodFisc)
+        references Ricercatore (CodFisc)
             on update cascade
             on delete no action,
     primary key (NumOrd, CodFisc)
