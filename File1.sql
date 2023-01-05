@@ -326,8 +326,6 @@ create table AnimalePescato
     StadioMat varchar(2)
 );
 
-insert into Ricercatore (CodFisc, NomeR, CognomeR) VALUES
-
 insert into Irbim (SedeAmm, ParIVA, Figura)
 values ('Ancona', 21145647324, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura)
@@ -344,7 +342,7 @@ values (4857, 1260.00, 3);
 insert into RDA (NumOrd, CostoTot, QBarche)
 values (3034, 3000.00, 3);
 insert into RDA (NumOrd, CostoTot, QBarche)
-values (4372, 6704.00, 2);
+values (4372, 6704.00, 4);
 insert into RDA (NumOrd, CostoTot, QBarche)
 values (509, 1198.00, 1);
 insert into RDA (NumOrd, CostoTot, QBarche)
@@ -361,7 +359,7 @@ values (4857, 1260.00, 3, 'CASSA DI RISPARMIO DI MACERATA', 'CNR ISTITUTO RISORS
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario)
 values (3034, 3000.00, 3, 'CASSA DI RISPARMIO DI FERMO', 'CNR ISTITUTO RISORSE BIOLOGICHE');
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario)
-values (4372, 6704.00, 2, 'CASSA DI RISPARMIO DI MACERATA', 'CNR ISTITUTO RISORSE BIOLOGICHE');
+values (4372, 6704.00, 4, 'CASSA DI RISPARMIO DI MACERATA', 'CNR ISTITUTO RISORSE BIOLOGICHE');
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario)
 values (509, 1198.00, 1, 'CASSA DI RISPARMIO DI FERMO', 'CNR ISTITUTO RISORSE BIOLOGICHE');
 insert into Fattura (NumOrd, CostoTot, QBarche, Cedente, Cessionario)
@@ -378,7 +376,7 @@ values (4857, 1260.00, 3, 'Emporio del Marinaio SPA', 74936370159);
 insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA)
 values (3034, 3000.00, 3, 'F.lli Gianni Pesca SAS', 50982900529);
 insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA)
-values (4372, 6704.00, 2, 'Cuore ittico SAS', 60888610627);
+values (4372, 6704.00, 4, 'Cuore ittico SAS', 60888610627);
 insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA)
 values (509, 1198.00, 1, 'F.lli Gianni Pesca SPA', 50982900529);
 insert into Contratto (NumOrd, CostTot, QBarche, NomeDitta, ParIVA)
@@ -407,7 +405,6 @@ insert into Pescatore(CodFisc, Iban, NomeP, CognomeP)
 values ('BNCDBR81I03D110W', 'IT47S0300203280992657365563', 'Debora', 'Bianchi');
 insert into Pescatore(CodFisc, Iban, NomeP, CognomeP)
 values ('SRGRRT90L01I607X', 'IT19R0300203280396558915351', 'Roberto', 'Soraggi');
-
 
 insert into UscitaPescatore(CodFisc, IdOp)
 values ('RSSGLN88C12G631L', 1);
@@ -440,6 +437,13 @@ insert into Ricercatore(CodFisc, NomeR, CognomeR)
 values ('GVNNGL90T30C252V', 'Angelo', 'Giovannetti');
 insert into Ricercatore(CodFisc, NomeR, CognomeR)
 values ('CRDCCL85A41F789X', 'Cecilia', 'Caredio');
+
+select R.NumOrd,R.QBarche
+from RDA R
+         inner join Domanda D
+                    on R.NumOrd = D.NumOrd
+where D.CodFisc = 'CLLGPP84L01D696J'
+order by QBarche DESC;
 
 insert into UscitaRicercatore(CodFisc, IdOp)
 values ('CPPFNC69T09F315F', 1);
@@ -650,7 +654,7 @@ select R.NumOrd,R.QBarche
 from RDA R
          inner join Domanda D
                     on R.NumOrd = D.NumOrd
-where D.CodFisc = 'CLLGPP84L01D696J'
+where D.CodFisc = 'BNCDBR81I03D110W'
 order by QBarche ASC;
 
 select I.LFT
