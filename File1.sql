@@ -210,7 +210,7 @@ create table Partecipazione
             on update cascade
             on delete no action,
     primary key (CodProg, CodFisc)
-)
+);
 
 
 create table Ricercatore
