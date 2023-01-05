@@ -326,8 +326,6 @@ create table AnimalePescato
     StadioMat varchar(2)
 );
 
-insert into Ricercatore (CodFisc, NomeR, CognomeR) VALUES
-
 insert into Irbim (SedeAmm, ParIVA, Figura)
 values ('Ancona', 21145647324, 'Amministratore');
 insert into Irbim (SedeAmm, ParIVA, Figura)
