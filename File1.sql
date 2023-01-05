@@ -197,11 +197,16 @@ create table Progetto
 
 create table Partecipazione
 (
-    CodProg integer,
-    CodFisc char(16),
+    CodProg integer
+        references Progetto (CodProg)
+            on update cascade
+            on delete no action,
+    CodFisc char(16)
+        references Ricercatore (CodFisc)
+            on update cascade
+            on delete no action,
     primary key (CodProg, CodFisc)
-);
-
+)
 
 
 create table Ricercatore
@@ -741,4 +746,3 @@ where U.IdOp IN (select Op.IdOp
                    and C.IdPesce In (select AnimalePescato.IdPesce
                                      from AnimalePescato
                                      where Nome = 'Merluzzo'));
-
