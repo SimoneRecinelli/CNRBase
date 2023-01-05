@@ -319,6 +319,7 @@ create table UscitaRicercatore
 );
 
 
+
 create table AnimalePescato
 (
     IdPesce   integer primary key,
