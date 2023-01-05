@@ -53,6 +53,10 @@ set PortoA = 'La Spezia',
     PortoP = 'La Spezia'
 where IdBarca = 'AL635';
 
+update Imbarcazione
+set Attrezzo = 'Tremaglio'
+where IdBarca = 'AZ205';
+
 update OperazioneDiPesca
 set Data    = '2023-01-02',
     GSA     = '16',
@@ -322,7 +326,7 @@ create table AnimalePescato
     StadioMat varchar(2)
 );
 
-
+insert into Ricercatore (CodFisc, NomeR, CognomeR) VALUES
 
 insert into Irbim (SedeAmm, ParIVA, Figura)
 values ('Ancona', 21145647324, 'Amministratore');
